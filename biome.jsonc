@@ -1,0 +1,57 @@
+{
+  "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
+  "extends": ["ultracite/biome/core", "ultracite/biome/next"],
+  "linter": {
+    "rules": {
+      "style": {
+        "useConsistentTypeDefinitions": {
+          "level": "error",
+          "options": {
+            "style": "type"
+          }
+        },
+        "noRestrictedImports": {
+          "level": "error",
+          "options": {
+            "paths": {
+              "next/navigation": {
+                "importNames": [
+                  "useRouter",
+                  "usePathname",
+                  "Link",
+                  "redirect",
+                  "getPathname"
+                ],
+                "message": "Use the custom navigation from '@/provider/route-progress-provider' or '@/i18n/navigation'"
+              },
+              "@bprogress/next/app": {
+                "importNames": ["useRouter"],
+                "message": "Use the custom navigation from '@/provider/route-progress-provider'"
+              },
+              "@/i18n/navigation": {
+                "importNames": ["useRouter"],
+                "message": "Use the custom navigation from '@/provider/route-progress-provider'"
+              },
+              "@i18n/navigation": {
+                "importNames": ["useRouter"],
+                "message": "Use the custom navigation from '@/provider/route-progress-provider'"
+              },
+              "/i18n/navigation": {
+                "importNames": ["useRouter"],
+                "message": "Use the custom navigation from '@/provider/route-progress-provider'"
+              }
+            }
+          }
+        }
+      },
+      "complexity": {
+        "noExcessiveCognitiveComplexity": {
+          "level": "error",
+          "options": {
+            "maxAllowedComplexity": 25
+          }
+        }
+      }
+    }
+  }
+}
